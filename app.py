@@ -92,16 +92,18 @@ app.layout = html.Div([
 ### UPDATE LENNARD-JONES POTENTIAL PLOT ###
 
 @app.callback(Output('lj_plot', 'figure'),
-             [Input('lj_e', 'value'),
-             Input('lj_s', 'value'),
-             Input('lj_r', 'value')])
+             [Input('lj_e_slider', 'value'),
+             Input('lj_s_slider', 'value'),
+             Input('lj_r_slider', 'value')])
 def update_lj_plot(e_value, s_value, r_value):
     return lj.update_lj_plot(e_value, s_value, r_value)
 
+### UPDATE LENNARD-JONES ATOM-FORCE PLOT ###
+
 @app.callback(Output('lj_force_plot', 'figure'),
-             [Input('lj_e', 'value'),
-             Input('lj_s', 'value'),
-             Input('lj_r', 'value')])
+             [Input('lj_e_slider', 'value'),
+             Input('lj_s_slider', 'value'),
+             Input('lj_r_slider', 'value')])
 def update_lj_force_plot(e_value, s_value, r_value):
     return lj.update_lj_force_plot(e_value, s_value, r_value)
 

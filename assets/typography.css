@@ -3,8 +3,8 @@ body {
     /* opacity: 0.87; */
     /* background-color: #121212; */
     background-color: #000000;
-    color: #F4F4F4;
-    color: #dbdbdb;
+    /* color: #F4F4F4; */
+    /* color: #dbdbdb; */
     color: #c3c3c3;
     font-weight: 100;
 }
@@ -48,11 +48,6 @@ h4, h5, h6 {
 
 .eq {
   font-family: serif;
-}
-
-img {
-  /* filter: grayscale; */
-  opacity: 1;
 }
 
 .rc-slider-track {
