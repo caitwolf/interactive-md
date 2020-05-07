@@ -73,7 +73,7 @@ bond_text = html.Div([
 
     html.P([
         '''
-        The optimal bond distance is found at the bottom of the well in the harmonic bonded potential profile. At this point, the force vector is zero. However, as the atoms get closer together, they feel a repulsive (negative) force, and as the atoms get farther away, they feel a proportionally strong attractive force (positive). Note the symmetric nature of this potential. The bonded potential energy and force are shown in the graph below. Use the sliders to change the distance between the atoms, as well as the bo and Kb parameters. You can observe how modifying the Kb forth change the strength of the interaction.
+        The optimal bond distance is found at the bottom of the well in the harmonic bonded potential profile. At this point, the force vector is zero. However, as the atoms get closer together, they feel a repulsive (positive) force, and as the atoms get farther away, they feel a proportionally strong attractive force (negative). Note the symmetric nature of this potential. The bonded potential energy and force are shown in the graph below. Use the sliders to change the distance between the atoms, as well as the bo and Kb parameters. You can observe how modifying the Kb forth change the strength of the interaction.
         '''
     ], style={'textAlign':'justify'}),
 
