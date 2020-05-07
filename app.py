@@ -10,6 +10,7 @@ import lennard_jones as lj
 import header
 import introduction as intro
 import force_fields as ff
+import bonds as bond
 
 import plotly.express as px
 
@@ -30,6 +31,63 @@ app.layout = html.Div([
 
     ### FORCE FIELDS ###
     html.Div([ff.ff_text], className='float'),
+
+    ### BOND POTENTIAL ###
+    html.Div([
+
+        bond.bond_text,
+
+        html.Br(),
+
+    ], className='float'),
+
+    html.Div([
+
+        html.Div([
+
+            html.Div([
+
+                html.Div([
+                    html.Div(['b (\u212B)'], className = 'col-sm-3', style={'textAlign':'center', 'fontFamily':'serif', 'fontSize':'16px'}),
+                    html.Div([
+                        bond.bond_b_slider,
+                    ], className = 'col-sm-9', style={'verticalAlign':'center'}),
+                ], className = 'row', style={'verticalAlign':'center','height':'50px', 'padding': '15px 0'}),
+
+                html.Div([
+                    html.Label(['b', html.Sub('o'), ' (\u212B)'], className = 'col-sm-3', style={'textAlign':'center', 'verticalAlign':'center', 'fontFamily':'serif', 'fontSize':'16px'}),
+                    html.Div([
+                        bond.bond_bo_slider,
+                    ], className = 'col-sm-9'),
+                ], className = 'row', style={'verticalAlign':'center','height':'50px', 'padding': '15px 0'}),
+
+                html.Div([
+                    html.Label(['K', html.Sub('b'),' (kJ/(mol*\u212B',html.Sup('2'),'))'], className = 'col-sm-3', style={'textAlign':'center', 'verticalAlign':'center', 'fontFamily':'serif', 'fontSize':'16px'}),
+                    html.Div([
+                        bond.bond_kb_slider,
+                    ], className = 'col-sm-9'),
+                ], className = 'row', style={'verticalAlign':'center','height':'50px', 'padding': '15px 0'}),
+
+            ], className = 'float', style={'verticalAlign':'center'}),
+
+            html.Div([
+
+                bond.bond_force_plot,
+
+            ], className = 'float', style={'height':'290px'}),
+
+        ], className='col-sm-6'),
+
+        html.Div([
+
+            html.Div([
+
+                bond.bond_plot,
+
+            ], className = 'float', style={}),
+
+        ], className='col-sm-6'),
+    ], className='row'),
 
     ### LENNARD-JONES POTENTIAL ###
     html.Div([
@@ -61,7 +119,7 @@ app.layout = html.Div([
                 ], className = 'row', style={'verticalAlign':'center','height':'50px', 'padding': '15px 0'}),
 
                 html.Div([
-                    html.Label(['\u025B (kcal/mol)'], className = 'col-sm-3', style={'textAlign':'center', 'verticalAlign':'center', 'fontFamily':'serif', 'fontSize':'16px'}),
+                    html.Label(['\u025B (kJ/mol)'], className = 'col-sm-3', style={'textAlign':'center', 'verticalAlign':'center', 'fontFamily':'serif', 'fontSize':'16px'}),
                     html.Div([
                         lj.lj_e_slider,
                     ], className = 'col-sm-9'),
@@ -87,6 +145,7 @@ app.layout = html.Div([
 
         ], className='col-sm-6'),
     ], className='row'),
+
 ])
 
 ### UPDATE LENNARD-JONES POTENTIAL PLOT ###
@@ -106,6 +165,24 @@ def update_lj_plot(e_value, s_value, r_value):
              Input('lj_r_slider', 'value')])
 def update_lj_force_plot(e_value, s_value, r_value):
     return lj.update_lj_force_plot(e_value, s_value, r_value)
+
+### UPDATE BONDED POTENTIAL PLOT ###
+
+@app.callback(Output('bond_plot', 'figure'),
+             [Input('bond_b_slider', 'value'),
+             Input('bond_bo_slider', 'value'),
+             Input('bond_kb_slider', 'value')])
+def update_bond_plot(b_value, bo_value, kb_value):
+    return bond.update_bond_plot(b_value, bo_value, kb_value)
+
+### UPDATE BONDED ATOM-FORCE PLOT ###
+
+@app.callback(Output('bond_force_plot', 'figure'),
+             [Input('bond_b_slider', 'value'),
+             Input('bond_bo_slider', 'value'),
+             Input('bond_kb_slider', 'value')])
+def update_bond_force_plot(b_value, bo_value, kb_value):
+    return bond.update_bond_force_plot(b_value, bo_value, kb_value)
 
 # set debug=False when not in development
 if __name__ == '__main__':
