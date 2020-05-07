@@ -11,6 +11,7 @@ import header
 import introduction as intro
 import force_fields as ff
 import bonds as bond
+import angles as angle
 
 import plotly.express as px
 
@@ -83,6 +84,64 @@ app.layout = html.Div([
             html.Div([
 
                 bond.bond_plot,
+
+            ], className = 'float', style={}),
+
+        ], className='col-sm-6'),
+
+    ], className='row'),
+
+    ### ANGLE POTENTIAL ###
+    html.Div([
+
+        angle.angle_text,
+
+        html.Br(),
+
+    ], className='float'),
+
+    html.Div([
+
+        html.Div([
+
+            html.Div([
+
+                html.Div([
+                    html.Div(['\u03B8 (degrees)'], className = 'col-sm-4', style={'textAlign':'center', 'fontFamily':'serif', 'fontSize':'16px'}),
+                    html.Div([
+                        angle.angle_th_slider,
+                    ], className = 'col-sm-8', style={'verticalAlign':'center'}),
+                ], className = 'row', style={'verticalAlign':'center','height':'50px', 'padding': '15px 0'}),
+
+                html.Div([
+                    html.Label(['\u03B8', html.Sub('o'), ' (degrees)'], className = 'col-sm-4', style={'textAlign':'center', 'verticalAlign':'center', 'fontFamily':'serif', 'fontSize':'16px'}),
+                    html.Div([
+                        angle.angle_tho_slider,
+                    ], className = 'col-sm-8'),
+                ], className = 'row', style={'verticalAlign':'center','height':'50px', 'padding': '15px 0'}),
+
+                html.Div([
+                    html.Label(['K', html.Sub('\u03B8'),' (kJ/(mol*degrees',html.Sup('2'),'))'], className = 'col-sm-4', style={'textAlign':'center', 'verticalAlign':'center', 'fontFamily':'serif', 'fontSize':'16px'}),
+                    html.Div([
+                        angle.angle_kth_slider,
+                    ], className = 'col-sm-8'),
+                ], className = 'row', style={'verticalAlign':'center','height':'50px', 'padding': '15px 0'}),
+
+            ], className = 'float', style={'verticalAlign':'center'}),
+
+            html.Div([
+
+                angle.angle_force_plot,
+
+            ], className = 'float', style={'height':'290px'}),
+
+        ], className='col-sm-6'),
+
+        html.Div([
+
+            html.Div([
+
+                angle.angle_plot,
 
             ], className = 'float', style={}),
 
@@ -183,6 +242,25 @@ def update_bond_plot(b_value, bo_value, kb_value):
              Input('bond_kb_slider', 'value')])
 def update_bond_force_plot(b_value, bo_value, kb_value):
     return bond.update_bond_force_plot(b_value, bo_value, kb_value)
+
+### UPDATE ANGLE POTENTIAL PLOT ###
+
+@app.callback(Output('angle_plot', 'figure'),
+             [Input('angle_th_slider', 'value'),
+             Input('angle_tho_slider', 'value'),
+             Input('angle_kth_slider', 'value')])
+def update_angle_plot(th_value, tho_value, kth_value):
+    return angle.update_angle_plot(th_value, tho_value, kth_value)
+
+### UPDATE ANGLE ATOM-FORCE PLOT ###
+
+@app.callback(Output('angle_force_plot', 'figure'),
+             [Input('angle_th_slider', 'value'),
+             Input('angle_tho_slider', 'value'),
+             Input('angle_kth_slider', 'value')])
+def update_angle_force_plot(th_value, tho_value, kth_value):
+    return angle.update_angle_force_plot(th_value, tho_value, kth_value)
+
 
 # set debug=False when not in development
 if __name__ == '__main__':
