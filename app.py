@@ -23,9 +23,6 @@ app = dash.Dash(__name__,external_stylesheets=[dbc.themes.GRID])
 app.layout = html.Div([
 
     ### HEADER ###
-    html.Div([
-        html.Img(src='assets/images/cei-logo.png', style={'height':'100px'})
-    ], style={'textAlign':'center'}),
     header.header_text,
 
     ### INTRODUCTION ###
