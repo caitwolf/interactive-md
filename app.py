@@ -251,11 +251,11 @@ app.layout = html.Div([
 
             ], className = 'float', style={'verticalAlign':'center'}),
 
-            # html.Div([
-            #
-            #     lj.lj_force_plot,
-            #
-            # ], className = 'float', style={'height':'290px'}),
+            html.Div([
+
+                coul.coul_force_plot,
+
+            ], className = 'float', style={'height':'240px'}),
 
         ], className='col-sm-6'),
 
@@ -289,6 +289,26 @@ def update_lj_plot(e_value, s_value, r_value):
              Input('lj_r_slider', 'value')])
 def update_lj_force_plot(e_value, s_value, r_value):
     return lj.update_lj_force_plot(e_value, s_value, r_value)
+
+### UPDATE COULOMB POTENTIAL PLOT ###
+
+@app.callback(Output('coul_plot', 'figure'),
+             [Input('coul_q1_slider', 'value'),
+             Input('coul_q2_slider', 'value'),
+             Input('coul_r_slider', 'value'),
+             Input('coul_k_slider', 'value')])
+def update_coul_plot(q1_value, q2_value, r_value, k_value):
+    return coul.update_coul_plot(q1_value, q2_value, r_value, k_value)
+
+### UPDATE COULOMB ATOM-FORCE PLOT ###
+
+@app.callback(Output('coul_force_plot', 'figure'),
+             [Input('coul_q1_slider', 'value'),
+             Input('coul_q2_slider', 'value'),
+             Input('coul_r_slider', 'value'),
+             Input('coul_k_slider', 'value')])
+def update_coul_force_plot(q1_value, q2_value, r_value, k_value):
+    return coul.update_coul_force_plot(q1_value, q2_value, r_value, k_value)
 
 ### UPDATE BONDED POTENTIAL PLOT ###
 
