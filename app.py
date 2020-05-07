@@ -346,4 +346,4 @@ def update_angle_force_plot(th_value, tho_value, kth_value):
 
 # set debug=False when not in development
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    app.run_server(debug=False)
