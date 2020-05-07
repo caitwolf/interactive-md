@@ -199,6 +199,15 @@ def update_lj_plot(e_value, s_value, r_value):
         )
     )
 
+    fig.add_trace(
+        go.Scatter(
+            x=[r_value],
+            y = force(r_value, s_value, e_value),
+            mode='markers',
+            marker={'color':'#E6526A', 'size':12},
+        ), secondary_y=True,
+    )
+
     ### graph layout ###
     fig.update_xaxes(
         range=[0,max(r)],
@@ -353,7 +362,7 @@ def update_lj_force_plot(e_value, s_value, r_value):
         font=dict(
             color="#c3c3c3",
         ),
-        #title='Lennard-Jones Interaction',
+        title='Lennard-Jones Interaction',
         annotations=[
 
             ### left force vector ###
