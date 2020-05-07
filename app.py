@@ -12,6 +12,7 @@ import introduction as intro
 import force_fields as ff
 import bonds as bond
 import angles as angle
+import coulomb as coul
 
 import plotly.express as px
 
@@ -199,6 +200,70 @@ app.layout = html.Div([
             html.Div([
 
                 lj.lj_plot,
+
+            ], className = 'float', style={}),
+
+        ], className='col-sm-6'),
+    ], className='row'),
+
+    ### COULOMB POTENTIAL ###
+    html.Div([
+
+        coul.coulomb_text,
+
+        html.Br(),
+
+    ], className='float'),
+
+    html.Div([
+
+        html.Div([
+
+            html.Div([
+
+                html.Div([
+                    html.Div(['q', html.Sub('1'),' (e)'], className = 'col-sm-3', style={'textAlign':'center', 'fontFamily':'serif', 'fontSize':'16px'}),
+                    html.Div([
+                        coul.coul_q1_slider,
+                    ], className = 'col-sm-9', style={'verticalAlign':'center'}),
+                ], className = 'row', style={'verticalAlign':'center','height':'50px', 'padding': '15px 0'}),
+
+                html.Div([
+                    html.Div(['q', html.Sub('2'),' (e)'], className = 'col-sm-3', style={'textAlign':'center', 'fontFamily':'serif', 'fontSize':'16px'}),
+                    html.Div([
+                        coul.coul_q2_slider,
+                    ], className = 'col-sm-9', style={'verticalAlign':'center'}),
+                ], className = 'row', style={'verticalAlign':'center','height':'50px', 'padding': '15px 0'}),
+
+                html.Div([
+                    html.Label(['r (\u212B)'], className = 'col-sm-3', style={'textAlign':'center', 'verticalAlign':'center', 'fontFamily':'serif', 'fontSize':'16px'}),
+                    html.Div([
+                        coul.coul_r_slider,
+                    ], className = 'col-sm-9'),
+                ], className = 'row', style={'verticalAlign':'center','height':'50px', 'padding': '15px 0'}),
+
+                html.Div([
+                    html.Label(['\u03BA'], className = 'col-sm-3', style={'textAlign':'center', 'verticalAlign':'center', 'fontFamily':'sans-serif', 'fontSize':'16px'}),
+                    html.Div([
+                        coul.coul_k_slider,
+                    ], className = 'col-sm-9'),
+                ], className = 'row', style={'verticalAlign':'center','height':'50px', 'padding': '15px 0'}),
+
+            ], className = 'float', style={'verticalAlign':'center'}),
+
+            # html.Div([
+            #
+            #     lj.lj_force_plot,
+            #
+            # ], className = 'float', style={'height':'290px'}),
+
+        ], className='col-sm-6'),
+
+        html.Div([
+
+            html.Div([
+
+                coul.coul_plot,
 
             ], className = 'float', style={}),
 
