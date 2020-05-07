@@ -173,7 +173,7 @@ coul_r_slider = dcc.Slider(
         min_r: str(min_r),
         max_r: str(max_r),
     },
-    value=np.round((max_r-min_r)/2,1), # starts at optimal distance
+    value=5.2, # starts at optimal distance
     tooltip = { 'always_visible': False },
 )
 
