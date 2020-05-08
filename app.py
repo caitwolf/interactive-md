@@ -30,8 +30,8 @@ app.layout = html.Div([
     ### HEADER ###
     header.header_text,
 
-    ### INTRODUCTION ###
-    html.Div([intro.intro_text], className='float'),
+    # ### INTRODUCTION ###
+    # html.Div([intro.intro_text], className='float'),
 
     ### FORCE FIELDS ###
     html.Div([ff.ff_text], className='float'),
