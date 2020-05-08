@@ -22,6 +22,9 @@ app = dash.Dash(__name__,external_stylesheets=[dbc.themes.GRID])
 
 server = app.server
 
+app.scripts.config.serve_locally = True
+app.css.config.serve_locally = True
+
 app.layout = html.Div([
 
     ### HEADER ###
