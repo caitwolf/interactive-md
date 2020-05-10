@@ -13,6 +13,7 @@ import force_fields as ff
 import bonds as bond
 import angles as angle
 import coulomb as coul
+import references as ref
 
 import plotly.express as px
 
@@ -20,10 +21,10 @@ import plotly.express as px
 
 app = dash.Dash(__name__,external_stylesheets=[dbc.themes.GRID])
 
-server = app.server
-
-app.scripts.config.serve_locally = True
-app.css.config.serve_locally = True
+# server = app.server
+#
+# app.scripts.config.serve_locally = True
+# app.css.config.serve_locally = True
 
 app.layout = html.Div([
 
@@ -272,6 +273,9 @@ app.layout = html.Div([
         ], className='col-sm-6'),
     ], className='row'),
 
+    # ### REFERENCES ###
+    html.Div([ref.refs], className='float'),
+
 ])
 
 ### UPDATE LENNARD-JONES POTENTIAL PLOT ###
@@ -351,4 +355,4 @@ def update_angle_force_plot(th_value, tho_value, kth_value):
 
 # set debug=False when not in development
 if __name__ == '__main__':
-    app.run_server(debug=False)
+    app.run_server(debug=True)
