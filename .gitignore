@@ -4,5 +4,5 @@
 *.ipynb
 __pycache__/
 cei-logo.png
-
+MD_Wiki/*
 
